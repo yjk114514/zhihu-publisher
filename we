@@ -1,9 +1,0 @@
-以下是一个使用Markdown语法创建的包含`path`、`sha256`、`lastModified`、`loc`列的表格示例：
-
-| path | sha256 | lastModified | loc |
-| ---- | ---- | ---- | ---- |
-| /documents/file1.txt | 87d47f27c8c96657d85a7c8c2d8d76c8d97f98787887878888 | 2025-03-20 10:30:00 | New York |
-| /images/image2.jpg | e7c8d97f9878788787888887d47f27c8c96657d85a | 2025-03-15 14:15:00 | London |
-| /scripts/script.js | c8d97f9878788787888887d47f27c8c96657d85a7c | 2025-03-22 09:22:00 | Tokyo |
-
-你可以根据实际情况修改表格中的内容。若你还有其他特殊需求，比如对某些数据进行格式调整等，请随时告诉我。
