@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const history = require('./resource/history.json');
-const {workDir} = require('./resource/config.json');
+const history = require('../resource/history.json');
+const {workDir} = require('../resource/config.json');
 const {utils} = require('./utils');
 
 async function updateEdition(dir) {
@@ -23,12 +23,12 @@ async function updateEdition(dir) {
         }
     }
 
-    fs.writeFileSync( __dirname+'\\.cache\\0.json',JSON.stringify(records, null, 2),);
-    const records_sha256 = await utils.calculateSHA256(__dirname+'\\.cache\\0.json');
-    fs.renameSync(__dirname+'\\.cache\\0.json', __dirname+'\\.cache\\' + records_sha256.slice(0,6) + '.json');
+    fs.writeFileSync( process.cwd()+'\\.cache\\0.json',JSON.stringify(records, null, 2),);
+    const records_sha256 = await utils.calculateSHA256(process.cwd()+'\\.cache\\0.json');
+    fs.renameSync(process.cwd()+'\\.cache\\0.json', process.cwd()+'\\.cache\\' + records_sha256.slice(0,6) + '.json');
 
     history.updateEditionCacheList=[records_sha256.slice(0,6) + '.json',...history.updateEditionCacheList]
-    fs.writeFileSync(__dirname+'\\resource\\history.json', JSON.stringify(history, null, 2));
+    fs.writeFileSync(process.cwd()+'\\resource\\history.json', JSON.stringify(history, null, 2));
     console.log(`Update to edition ${records_sha256.slice(0,6)}`);
 }
 
@@ -69,8 +69,8 @@ function compareEdition(oldFile, newFile) {
 async function compareWithLastUpdate() {
     await updateEdition(workDir)
 
-    const oldFilePath = path.join(__dirname, '.cache', history.updateEditionCacheList[1]?history.updateEditionCacheList[1]:'init.json');
-    const newFilePath = path.join(__dirname, '.cache', history.updateEditionCacheList[0]);
+    const oldFilePath = path.join(process.cwd(), '.cache', history.updateEditionCacheList[1]?history.updateEditionCacheList[1]:'init.json');
+    const newFilePath = path.join(process.cwd(), '.cache', history.updateEditionCacheList[0]);
 
     return compareEdition(oldFilePath, newFilePath);
 }

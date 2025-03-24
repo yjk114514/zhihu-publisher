@@ -1,4 +1,4 @@
-const {headers, accountCookie} = require('../note/src/net/config');
+const {headers, cookies} = require('../resource/config.json');
 
 async function updateArticle(articleId, title, content) {
     const body = {
@@ -11,7 +11,7 @@ async function updateArticle(articleId, title, content) {
     return fetch(`https://zhuanlan.zhihu.com/api/articles/${articleId}/draft`, {
         "headers": {
             ...headers,
-            "cookie": `z_c0=${accountCookie.z_c0}`
+            "cookie": `z_c0=${cookies.z_c0}`
         },
         "body": JSON.stringify(body),
         "method": "PATCH"
@@ -30,7 +30,7 @@ async function createArticle(title, content) {
     return fetch("https://zhuanlan.zhihu.com/api/articles/drafts", {
         "headers": {
             ...headers,
-            "cookie": `z_c0=${accountCookie.z_c0}`
+            "cookie": `z_c0=${cookies.z_c0}`
         },
         "body": JSON.stringify(body),
         "method": "POST"
@@ -44,7 +44,7 @@ async function createArticle(title, content) {
             fetch(`https://zhuanlan.zhihu.com/api/articles/${articleId}/draft`, {
                 "headers": {
                     ...headers,
-                    "cookie": `z_c0=${accountCookie.z_c0}`
+                    "cookie": `z_c0=${cookies.z_c0}`
                 },
                 "body": JSON.stringify(body),
                 "method": "PATCH"
@@ -59,7 +59,7 @@ async function deleteArticle(articleId) {
     return fetch(`https://www.zhihu.com/api/v4/articles/${articleId}/draft`, {
         "headers": {
             ...headers,
-            "cookie": `z_c0=${accountCookie.z_c0}`
+            "cookie": `z_c0=${cookies.z_c0}`
         },
         "body": null,
         "method": "DELETE"

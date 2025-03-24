@@ -1,10 +1,16 @@
 {
   "name": "zhihu-publisher",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tools help you to publish articles just by vscode or jetbrain IDEs, like turning zhihu into a MarkDown Github",
   "main": "index.js",
   "scripts": {
     "test": "node index.js"
   },
-  "private": true
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "marked": "^15.0.7"
+  }
 }
